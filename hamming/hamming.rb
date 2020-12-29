@@ -1,15 +1,19 @@
 # frozen_string_literal: true
 
-# Find the 'Hamming distance' by comparing two DNA strands 
+# Count the different nucleotides in two DNA strands
 class Hamming
   def self.compute(strand_a, strand_b)
     raise ArgumentError unless strand_a.size == strand_b.size
 
-    {strand_a.chars, strand_b.chars}.reduce(0) { |counter, [char_a, char_b]| counter += 1 if char_a == char_b }
-    counter
+    # Option 1:
+    strand_a.each_char.with_index.reduce(0) { |counter, (a, idx)| a == strand_b.chars[idx] ? counter : counter += 1 }
+    
+    # Option 2:
+    # strand_a.each_char.with_index.count{ |a, idx| a != strand_b[idx] }
   end
 end
 
+# Original solution:
 
 # class Hamming
 #   def self.compute(strand_a, strand_b)
