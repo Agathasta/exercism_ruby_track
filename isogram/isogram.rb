@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 # Determine if a word or phrase is an isogram.
 class Isogram
-  attr_reader :input
+  attr_reader :stripped_input
 
   def self.isogram?(input)
     new(input).isogram?
@@ -11,10 +9,6 @@ class Isogram
   private
 
   def initialize(input)
-    @input = input
-  end
-
-  def stripped_input
     @stripped_input ||= input.downcase.scan(/\w/)
   end
 

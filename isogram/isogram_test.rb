@@ -17,6 +17,18 @@ class IsogramTest < Minitest::Test
     assert Isogram.isogram?(input), "Expected true, '#{input}' is an isogram"
   end
 
+  def test_isogram_with_numbers
+    # skip
+    input = '432871'
+    assert Isogram.isogram?(input), "Expected true, '#{input}' is an isogram"
+  end
+
+  def test_isogram_repeated_numbers
+    # skip
+    input = '4321871'
+    refute Isogram.isogram?(input), "Expected false, '#{input}' is not an isogram"
+  end
+
   def test_word_with_one_duplicated_character
     # skip
     input = 'eleven'

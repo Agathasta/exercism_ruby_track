@@ -1,0 +1,34 @@
+From: Victor Goff <keeperotphones@gmail.com>
+Subject: [PATCH] [agathasta exercism-ruby v1 1/1] Flatten Array: use compact
+Date: 30. December 2020 at 06:26:49 CET
+To: "[AGATHASTA] [exercism-ruby-track]" <kalidonia@hotmail.com>
+Cc: keeperotphones+patch@gmail.com
+
+Signed-off-by: Victor Goff <keeperotphones@gmail.com>
+---
+
+Notes:
+
+   No strings to protect, no reason for the scaffolding.  Like
+scaffolding around the house, it should only go up when it is going to
+be needed to support some work that is going to happen.
+
+flatten-array/flatten_array.rb | 4 +---
+1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/flatten-array/flatten_array.rb b/flatten-array/flatten_array.rb
+index 561e1f8..06b7548 100644
+--- a/flatten-array/flatten_array.rb
++++ b/flatten-array/flatten_array.rb
+@@ -1,7 +1,5 @@
+-# frozen_string_literal: true
+-
+class FlattenArray
+  def self.flatten(nested_list)
+-    nested_list.flatten.reject(&:nil?)
++    nested_list.flatten.compact
+  end
+end
+-- 
+2.29.2
+
