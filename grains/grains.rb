@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Grains
   def self.square(sqr)
     raise ArgumentError unless (1..64).include? sqr
