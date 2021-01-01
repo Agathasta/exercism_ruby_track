@@ -1,17 +1,17 @@
 public
 
-# Implement the keepoperation on collections.
-def keep(kept = [])
-  length.times do |i|
-    kept << self[i] if yield(self[i])
+# Implement the keep operation on collections.
+def keep
+  return to_enum(:keep) unless block_given?
+
+  each_with_object([]) do |element, kept|
+    kept << element if yield(element)
   end
-  kept
 end
 
 # Implement the discard operation on collections.
-def discard(discarded = [])
-  length.times do |i|
-    discarded << self[i] unless yield(self[i])
-  end
-  discarded
+def discard
+  return to_enum(:discard) unless block_given?
+
+  keep { |element| element unless yield(element) }
 end
