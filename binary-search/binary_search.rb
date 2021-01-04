@@ -1,36 +1,27 @@
+# A binary search algorithm
 class BinarySearch
-  attr_reader :collection#, :ceiling, :floor
+  attr_reader :collection, :middle_index, :middle
 
-  def initialize(array, floor = 0, ceiling = array.length - 1)
-    @collection = array
-    # @floor = floor
-    # @ceiling = ceiling
+  def initialize(sorted_array)
+    @collection = sorted_array
   end
 
-  def search_for(entry, floor = 0, ceiling = collection.length - 1)
-    @floor = floor
-    @ceiling = ceiling
+  def search_for(entry, first_index = 0, last_index = collection.length - 1)
+    return nil if first_index > last_index
 
-    return nil if @floor > @ceiling
+    assign_variables(first_index, last_index)
 
-    if collection[middle] == entry
-      middle
-    elsif entry > collection[middle]
-      search_for(entry, floor_right, ceiling)#.search_for(entry)
-    elsif entry < collection[middle]
-      search_for(entry, floor, ceiling_left)#.search_for(entry)
+    if middle == entry
+      middle_index
+    elsif entry < middle
+      search_for(entry, first_index, middle_index - 1)
+    elsif entry > middle
+      search_for(entry, middle_index + 1, last_index)
     end
   end
 
-  def middle
-    middle = (@floor + @ceiling) / 2
-  end
-
-  def floor_right
-    middle + 1
-  end
-
-  def ceiling_left
-    middle - 1
+  def assign_variables(first_index, last_index)
+    @middle_index = (first_index + last_index) / 2
+    @middle = collection[middle_index]
   end
 end
