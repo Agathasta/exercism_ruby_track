@@ -1,20 +1,20 @@
 # Determine if a word or phrase is an isogram.
 class Isogram
-  attr_reader :stripped_input
-
-  def self.isogram?(input)
-    new(input).isogram?
+  def self.isogram?(phrase)
+    new(phrase).isogram?
   end
 
   private
 
-  def initialize(input)
-    @stripped_input ||= input.downcase.scan(/\w/)
+  attr_reader :phrase
+
+  def initialize(phrase)
+    @phrase = phrase.downcase.scan(/\w/)
   end
 
   public
 
   def isogram?
-    stripped_input.length == stripped_input.uniq.length
+    phrase.length == phrase.uniq.length
   end
 end
