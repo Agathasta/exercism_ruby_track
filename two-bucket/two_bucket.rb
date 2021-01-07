@@ -1,6 +1,4 @@
-# So this is at least working. Thanks to Mathologer for [this video](https://www.youtube.com/watch?v=0Oef3MHYEC0)
-# I want to do this more flexible, to be usable with more buckets.
-# And generally refractor it. Tomorrow...
+# Thanks to Mathologer for [this video](https://www.youtube.com/watch?v=0Oef3MHYEC0)
 class TwoBucket
   attr_reader :goal, :bucket_1, :bucket_2
 
