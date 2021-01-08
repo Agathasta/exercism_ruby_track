@@ -11,7 +11,7 @@ class PerfectNumber
     raise RuntimeError if number.negative?
 
     @number = number
-    @aliquot_sum = (1...number).reduce(0) { |sum, n| (number % n).zero? ? sum += n : sum  }
+    @aliquot_sum = (1...number).reduce(0) { |sum, factor| (number % factor).zero? ? sum += factor : sum  }
   end
 
   def classify
