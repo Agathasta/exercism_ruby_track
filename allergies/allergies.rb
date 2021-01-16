@@ -1,5 +1,7 @@
+# Given a person's allergy score, determine whether or not they're allergic to a given item,
+# and their full list of allergies.
 class Allergies
-  attr_reader :score, :allergies
+  attr_reader :score
 
   ALLERGIES = {
     1 => 'eggs',
@@ -14,24 +16,13 @@ class Allergies
 
   def initialize(score)
     @score = score
-    (1..score).each_with_object(powers = []) do |number, powers|
-      powers << number if (number & (number - 1)).zero? && ALLERGIES.keys.include?(number)
-    end
-    @allergies = []
-    for i in 1..(powers.length) do
-      powers.combination(i).each do |combination|
-        combination.reduce(:+) == score ? allergies.push(combination) : next
-      end
-    end
   end
 
   def allergic_to?(food)
-    allergies.flatten.include?(ALLERGIES.key(food))
+    list.include?(food)
+  end
+
+  def list
+    ALLERGIES.map { |key, allergie| allergie unless (key & score).zero? }.compact
   end
 end
-
-# allergies = Allergies.new(9)
-# p allergies.allergic_to?('eggs')
-# p allergies.allergic_to?('peanuts')
-# p allergies.allergic_to?('shellfish')
-# p allergies.allergic_to?('strawberries')
