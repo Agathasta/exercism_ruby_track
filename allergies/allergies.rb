@@ -23,6 +23,6 @@ class Allergies
   end
 
   def list
-    ALLERGIES.map { |key, allergie| allergie unless (key & score).zero? }.compact
+    ALLERGIES.map { |key, allergy| allergy unless (key & score).zero? }.compact
   end
 end
