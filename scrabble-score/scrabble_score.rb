@@ -11,17 +11,17 @@ class Scrabble
 
   attr_reader :letters, :tiles
 
-  def self.score(word)
-    new(word).to_i
+  def self.score(letters)
+    new(letters).to_i
   end
 
-  def initialize(word, tiles = TILE)
-    @letters = word.to_s.upcase.chars
+  def initialize(letters, tiles = TILE)
+    @letters = letters.to_s.upcase.chars
     @tiles = tiles
   end
 
   def score
-    letters.reduce(0) { |score, letter| score + tiles[letter] }
+    letters.sum { |letter| tiles[letter] }
   end
 
   def to_i
