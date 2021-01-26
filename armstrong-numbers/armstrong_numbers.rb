@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ArmstrongNumbers
-  def self.include?(num)
-    digits = num.to_s.chars.map(&:to_i)
-    num == digits.reduce(0) { |sum, d| sum += d**digits.size }
+  def self.include?(number)
+    digits = number.to_s.chars.map(&:to_i)
+    number == digits.sum { |d| d**digits.size }
   end
 end
